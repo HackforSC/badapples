@@ -12,12 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require foundation
-//= require jquery_nested_form
 //= require gritter
 //= require highcharts
-//= require comparison_chart_1
-//= require comparison_chart_2
-//= require comparison_chart_3
-//= require new_chart

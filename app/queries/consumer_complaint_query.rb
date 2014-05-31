@@ -11,7 +11,7 @@ class ConsumerComplaintQuery
  
   module Scopes
     def with_state_code(state_code)
-      where("state = ?", state)
+      where("state = ?", state_code)
     end
   end
 end
