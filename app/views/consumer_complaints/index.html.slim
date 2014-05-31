@@ -1,0 +1,22 @@
+= provide(:title, "Consumer Complaints")
+
+.section  
+  .section-contents
+    table
+      thead
+        tr
+          th Description
+          th Amount
+          th Due On
+      tbody
+        - complaints.each do |complaint|
+          tr
+            td
+              span.mobile-title Type:
+              span.mobile-content = complaint.created_at
+            td
+              span.mobile-title Amount:
+              span.mobile-content = complaint.created_at
+            td
+              span.mobile-title Date:
+              span.mobile-content = complaint.created_at

@@ -1,0 +1,32 @@
+<response>
+	<row>
+		<row _id="243402" _uuid="EDE1A725-2EAF-4C5A-AB0B-9C623671821E" _position="243402" _address="http://data.consumerfinance.gov/resource/x94z-ydhh/243402">
+			<complaint_id>875414</complaint_id>
+			<product>Bank account or service</product>
+			<sub_product>Checking account</sub_product>
+			<issue>Account opening, closing, or management</issue>
+			<state>NY</state>
+			<zip_code>10013</zip_code>
+			<submitted_via>Web</submitted_via>
+			<date_received>2014-05-29T00:00:00</date_received>
+			<date_sent_to_company>2014-05-30T00:00:00</date_sent_to_company>
+			<company>U.S. Bancorp</company>
+			<company_response>In progress</company_response>
+			<timely_response>Yes</timely_response>
+		</row>
+		<row _id="243398" _uuid="23CC3E05-EB4D-4EEA-A722-77E5E6CE8CB4" _position="243398" _address="http://data.consumerfinance.gov/resource/x94z-ydhh/243398">
+			<complaint_id>874457</complaint_id>
+			<product>Mortgage</product>
+			<sub_product>Conventional adjustable mortgage (ARM)</sub_product>
+			<issue>Loan modification,collection,foreclosure</issue>
+			<state>AZ</state>
+			<zip_code>85331</zip_code>
+			<submitted_via>Web</submitted_via>
+			<date_received>2014-05-30T00:00:00</date_received>
+			<date_sent_to_company>2014-05-30T00:00:00</date_sent_to_company>
+			<company>Flagstar Bank</company>
+			<company_response>In progress</company_response>
+			<timely_response>No</timely_response>
+		</row>
+	</row>
+</response>
