@@ -6,11 +6,17 @@
 	      thead
 	        tr
 	          th Received On
-	          th Product
+	          th Sub-Product
+	          th Issue
+	          th Company Reponse
 	      tbody
 	        - complaints.each do |complaint|
 	          tr
 	            td 
 	              span = complaint.received_on
 	            td 
-	              span = complaint.product
+	              span = complaint.sub_product
+	            td 
+	              span = complaint.issue
+	            td 
+	              span = complaint.company_response
