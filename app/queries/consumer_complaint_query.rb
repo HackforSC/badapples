@@ -5,8 +5,12 @@ class ConsumerComplaintQuery
     @relation = relation.extending(Scopes)
   end
   
-  def in_state(state_code)
-    relation.with_state_code(state_code).sort! { |a, b| a.created_at <=> b.created_at }
+  def in_state(state_code = nil)
+    if state_code.present?
+      relation.with_state_code(state_code).sort! { |a, b| a.created_at <=> b.created_at }
+    else
+      relation.sort! { |a, b| a.created_at <=> b.created_at }
+    end
   end
  
   module Scopes

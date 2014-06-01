@@ -1,22 +1,39 @@
 = provide(:title, "Consumer Complaints")
 
-.section  
-  .section-contents
-    table
-      thead
-        tr
-          th Description
-          th Amount
-          th Due On
-      tbody
-        - complaints.each do |complaint|
-          tr
-            td
-              span.mobile-title Type:
-              span.mobile-content = complaint.created_at
-            td
-              span.mobile-title Amount:
-              span.mobile-content = complaint.created_at
-            td
-              span.mobile-title Date:
-              span.mobile-content = complaint.created_at
+= render "/consumer_complaints/filtered_search"
+
+.row
+  .large-12.columns
+    div[class="section-container auto" data-section]
+      section
+        p[class="title" data-section-title]
+          a[href="#panel1"] Section 1
+        div[class="content" data-section-content]
+          = pie_chart ComplaintQueryPresenter.new(complaints).records_by_state
+      section
+        p[class="title" data-section-title]
+          a[href="#panel2"] Section 2
+        div[class="content" data-section-content]
+          / = line_chart complaints.map{ |complaint|
+          /     { name: complaint.state, data: complaint.feats.group_by_week(:created_at).count }        
+
+/ .section  
+/   .section-contents
+/     table
+/       thead
+/         tr
+/           th State
+/           th Issue
+/           th Company
+/           th Timely Response?
+/       tbody
+/         - complaints.each do |complaint|
+/           tr
+/             td
+/               span.mobile-content = complaint.state
+/             td
+/               span.mobile-content = complaint.issue
+/             td
+/               span.mobile-content = complaint.company
+/             td
+/               span.mobile-content = complaint.timely_response

@@ -34,29 +34,95 @@ class ConsumerComplaint < ActiveRecord::Base
   # Validations
   #----------------------------------------------------------------------------
   # validates :customer_number, :presence => true
-  # validates :application_number, :presence => true
-  # validates :first_name, :presence => true
-  # validates :last_name, :presence => true
-  # validates :email, :presence => true
-  # validates :date_of_birth, :presence => true
-  # validates :social_security_number, :presence => true
-  # validates :social_security_number, :social_security_number_format => true, :allow_blank => true
-  # validates :encrypted_social_security_number, :presence => true, :symmetric_encryption => true
-  # validates :street, :presence => true
-  # validates :city, :presence => true
-  # validates :state, :presence => true
-  # validates :zip_code, :presence => true
-  # validates :country, :presence => true
-  # validates :street, :presence => true
-  # validates :bank_account_number, :length => { :minimum => 3 }, :allow_nil => true
-  # validates :encrypted_bank_account_number, :symmetric_encryption => true, :allow_nil => true
-  # monetize :monthly_income_cents, :allow_nil => true, :numericality => { :greater_than_or_equal_to => 0 }
-  # monetize :payroll_garnishment_cents, :allow_nil => true, :numericality => { :greater_than_or_equal_to => 0 }
-  # validates :loan_amount, :presence => true, :numericality => { :allow_nil => false, :greater_than => 0 }
-  # monetize :loan_amount_cents, :allow_nil => false, :numericality => { :greater_than => 0 }
-  # validates :effective_date, :presence => true
-  # validates :due_date, :presence => true
 
+  def high_severity_issues
+    [
+      "Improper contact or sharing of info", 
+      "Cont'd attempts collect debt not owed",
+      "Taking/threatening an illegal action", 
+      "False statements or representation",
+      "Communication tactics", 
+      "Credit reporting company's investigation", 
+      "Settlement process and costs", 
+      "Improper use of my credit report", 
+      "Identity theft / Fraud / Embezzlement", 
+      "Unsolicited issuance of credit card",
+      "Money was not available when promised",
+      "Fraud or scam",
+      "Wrong amount charged or received"
+    ]
+  end
+
+  def medium_severity_issues
+    [
+      "Disclosure verification of debt", 
+      "Loan servicing, payments, escrow account",
+      "APR or interest rate", 
+      "Unable to get credit report/credit score", 
+      "Incorrect information on credit report", 
+      "Billing disputes", 
+      "Managing the loan or lease", 
+      "Credit monitoring or identity protection", 
+      "Customer service / Customer relations",
+      "Forbearance / Workout plans", 
+      "Credit card protection / Debt protection", "Arbitration", 
+      "Incorrect/missing disclosures or info", 
+      "Application processing delay", 
+      "Repaying your loan",
+      "Late fee", 
+      "Transaction issue", 
+      "Overlimit fee",
+      "Cash advance", 
+      "Balance transfer", 
+      "Other fee", 
+      "Cash advance fee",
+      "Account terms and changes"
+    ]
+  end
+
+  def low_severity_issues
+    [
+      "Can't repay my loan", 
+      "Problems when you are unable to pay", 
+      "Problems caused by my funds being low", 
+      "Account opening, closing, or management", 
+      "Loan modification,collection,foreclosure", 
+      "Deposits and withdrawals", 
+      "Application, originator, mortgage broker", 
+      "Making/receiving payments, sending money", 
+      "Taking out the loan or lease", 
+      "Credit line increase/decrease", 
+      "Rewards"
+    ]
+  end
+
+  def severity
+    if high_severity_issues.include?(issue)
+      "high"
+    elsif medium_severity_issues.include?(issue)
+      "medium"
+    elsif low_severity_issues.include?(issue)
+      "low"
+    else
+      "other"
+    end
+  end
+
+  def high_severity?
+    severity == "high"
+  end
+
+  def medium_severity?
+    severity == "medium"
+  end
+
+  def low_severity?
+    severity == "low"
+  end
+
+  def other_severity?
+    severity == "other"
+  end
 
   # Class Methods
   #----------------------------------------------------------------------------

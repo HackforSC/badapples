@@ -1,0 +1,10 @@
+.row
+  .large-12.columns
+    .row
+      = form_tag current_path do
+        .large-3.columns
+          = state_scope
+        .large-3.columns
+          = zip_code_scope
+        .large-3.columns
+          = submit_tag "Search"

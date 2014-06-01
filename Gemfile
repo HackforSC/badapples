@@ -62,6 +62,11 @@ gem 'slim', '~> 1.3.9'
 # Graphing packages
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'lazy_high_charts'
+gem 'chartkick'
+gem 'groupdate'
+
+# Draper decorators
+gem 'draper', '~> 1.3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
