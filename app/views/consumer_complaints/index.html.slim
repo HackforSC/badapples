@@ -7,9 +7,12 @@
     div[class="section-container auto" data-section]
       section
         p[class="title" data-section-title]
-          a[href="#panel1"] Section 1
+          a[href="#panel1"] Complaints Breakdown
         div[class="content" data-section-content]
-          = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:state)
+          h6 Complaints broken down by product
+          = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:product)
+          h6 Complaints broken down by company
+          = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
       section
         p[class="title" data-section-title]
           a[href="#panel2"] Section 2

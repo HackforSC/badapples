@@ -12,7 +12,7 @@ private
   def queried_complaints
     ConsumerComplaintQuery.new
       .in_state(selected_state)
-      .first(40)
+      .first(100)
   end
 
   def selected_state

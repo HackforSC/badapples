@@ -65,6 +65,9 @@ gem 'lazy_high_charts'
 gem 'chartkick'
 gem 'groupdate'
 
+# Parsing XLS (Excel)
+gem 'roo'
+
 # Draper decorators
 gem 'draper', '~> 1.3'
 

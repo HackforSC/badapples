@@ -3,7 +3,7 @@
 # Table name: consumer_complaints
 #
 #  id                                     :integer      not null, primary key
-#  consumer_finance_gov_ref_num           :integer      not null
+#  consumer_finance_gov_ref_num           :integer      not null, index
 #  product                                :string       not null
 #  sub_product                            :string       not null
 #  company                                :string       not null
