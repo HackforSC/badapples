@@ -1,13 +1,7 @@
 .row
   .large-12.columns
-    h6 Complaints broken down by company
+    h6 Complaints broken down by company (Number)
     = bar_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
 
-    / p = "Data = #{RelationAggregationPresenter.new(complaints.first(5)).trends_by_group(:product, :received_on)}"
-    / h6 Complaints broken down by company
-    / = line_chart RelationAggregationPresenter.new(complaints.first(5)).trends_by_group(:company, :received_on)
-
-    / = line_chart RelationAggregationPresenter.new(complaints).records_by_group(:received_on)
-
-
-    / = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
+    h6 Complaints broken down by company (Severity)
+    = bar_chart RelationAggregationPresenter.new(complaints).severity_by_group(:company)
