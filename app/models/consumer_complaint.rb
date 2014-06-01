@@ -15,13 +15,12 @@
 #  sent_to_company_on                     :date         not null
 #  company_response                       :string       not null
 #  timely_response                        :boolean      not null
+#  zip_code_median_income                 :decimal      not null
+#  zip_code_population                    :integer      not null
 #  created_at                             :datetime     not null
 #  updated_at                             :datetime     not null
 
 class ConsumerComplaint < ActiveRecord::Base
-  # Associations
-  #----------------------------------------------------------------------------
-
   # Attributes
   #----------------------------------------------------------------------------
   attr_accessible :consumer_finance_gov_ref_num, 
@@ -123,12 +122,6 @@ class ConsumerComplaint < ActiveRecord::Base
   def other_severity?
     severity == "other"
   end
-
-  # Class Methods
-  #----------------------------------------------------------------------------
-
-  # Public Methods
-  #----------------------------------------------------------------------------
 
   # Private Methods
   #----------------------------------------------------------------------------

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140601023621) do
+ActiveRecord::Schema.define(:version => 20140601053550) do
 
   create_table "consumer_complaints", :force => true do |t|
     t.string   "consumer_finance_gov_ref_num", :null => false
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20140601023621) do
     t.boolean  "timely_response"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.decimal  "zip_code_median_income"
+    t.integer  "zip_code_population"
   end
 
   create_table "zip_codes", :force => true do |t|
