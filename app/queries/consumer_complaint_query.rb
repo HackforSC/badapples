@@ -5,17 +5,41 @@ class ConsumerComplaintQuery
     @relation = relation.extending(Scopes)
   end
   
-  def in_state(state_code = nil)
+  def in(state_code = nil)
     if state_code.present?
-      relation.with_state_code(state_code).sort! { |a, b| a.created_at <=> b.created_at }
+      relation.with_state_code(state_code)
     else
-      relation.sort! { |a, b| a.created_at <=> b.created_at }
+      relation
     end
   end
  
+  def by_state_and_product(state_code = nil, product = nil)
+    if state_code.present?
+      if product.nil?
+        relation.with_state_code(state_code)
+      else
+        relation.with_state_code(state_code).with_product(product)
+      end
+    else
+      if product.nil?
+        relation
+      else
+        relation.with_product(product)
+      end
+    end
+  end
+
   module Scopes
     def with_state_code(state_code)
       where("state = ?", state_code)
+    end
+
+    def with_zip_code(zip_code)
+      where("zip = ?", zip_code)
+    end
+
+    def with_product(product)
+      where("product = ?", product)
     end
   end
 end

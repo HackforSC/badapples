@@ -9,13 +9,14 @@
         p[class="title" data-section-title]
           a[href="#panel1"] Complaints Breakdown
         div[class="content" data-section-content]
-          h6 Complaints broken down by product
-          = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:product)
-          h6 Complaints broken down by company
-          = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
+          = render partial: "/consumer_complaints/trends_by_company", locals: {:complaints => complaints}
+
+          / h6 Complaints broken down by product
+          / = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:product)
+          / h6 Complaints broken down by company
+          / = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
       section
         p[class="title" data-section-title]
           a[href="#panel2"] Section 2
         div[class="content" data-section-content]
-          / = line_chart complaints.map{ |complaint|
-          /     { name: complaint.state, data: complaint.feats.group_by_week(:created_at).count }        
+          = bar_chart RelationAggregationPresenter.new(complaints).severity_by_group(:company)

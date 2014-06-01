@@ -123,6 +123,10 @@ class ConsumerComplaint < ActiveRecord::Base
     severity == "other"
   end
 
+  def severity_score
+    SeverityModel.new(self).score
+  end
+
   # Private Methods
   #----------------------------------------------------------------------------
 private

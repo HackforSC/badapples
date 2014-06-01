@@ -4,7 +4,7 @@ class AddZipCodeDataToConsumerComplaints < ActiveRecord::Migration
     add_column :consumer_complaints, :zip_code_population, :integer
     ConsumerComplaint.reset_column_information
     ConsumerComplaint.all.each do |l|
-      matched_zip = ZipCode.find_by_zip_code(zip_code)
+      matched_zip = ZipCode.find_by_zip_code(l.zip_code)
 
       if matched_zip
         l.update_attribute :zip_code_median_income, matched_zip.median_income
