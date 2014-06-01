@@ -1,7 +1,7 @@
 class ConsumerComplaintsController < ApplicationController
 
   def index
-    render :action => :index, :locals => { :complaints => queried_complaints.first(40) }
+    render :action => :index, :locals => { :complaints => queried_complaints }
   end
 
   def complaint_breakdown
@@ -10,7 +10,9 @@ class ConsumerComplaintsController < ApplicationController
 
 private
   def queried_complaints
-    ConsumerComplaintQuery.new.in_state(selected_state)
+    ConsumerComplaintQuery.new
+      .in_state(selected_state)
+      .first(40)
   end
 
   def selected_state

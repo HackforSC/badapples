@@ -9,6 +9,4 @@ describe ComplaintQueryPresenter do
   end
 
   subject { described_class.new(relation) }
-
-  its(:records_by_state) { should eq({"CA"=>53, "NC"=>37, "SC"=>40}) }
 end

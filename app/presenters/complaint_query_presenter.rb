@@ -24,15 +24,4 @@ class ComplaintQueryPresenter
   def num_other_severity
     relation.select { |x| x.other_severity? }.count
   end
-
-  def records_by_state
-    states = relation.map { |s| s.state }.uniq
-
-    Hash.new.tap do |h|
-      states.each do |state|
-        count = relation.select { |r| r.state == state }.count
-        h.merge!( state.to_s => count )
-      end
-    end
-  end
 end
