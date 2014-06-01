@@ -29,6 +29,10 @@ class ConsumerComplaintQuery
     end
   end
 
+  def by_company(company)
+    relation.with_company(company)
+  end
+
   module Scopes
     def with_state_code(state_code)
       where("state = ?", state_code)
@@ -40,6 +44,10 @@ class ConsumerComplaintQuery
 
     def with_product(product)
       where("product = ?", product)
+    end
+
+    def with_company(company)
+      where("company = ?", company)
     end
   end
 end

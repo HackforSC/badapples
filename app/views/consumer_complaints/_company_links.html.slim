@@ -1,0 +1,4 @@
+- company_names(complaints).each do |company_name|
+  .row
+    .large-12.columns
+      = link_to "View #{company_name}", { :controller => "consumer_complaints", :action => "company_details", :company => company_name }, :class => "button radius small"

@@ -18,9 +18,9 @@ class RelationAggregationPresenter
   def severity_by_group(attribute)
     Hash.new.tap do |h|
       unique_values(attribute).each do |v|
-        records = relation.select { |r| r.send(attribute) == v }
-        sum = records.inject(0) { |total, record| total += record.severity_score }
-        avg = sum.to_d / records.count.to_d
+        scores = relation.select { |r| r.send(attribute) == v }.map(&:severity_score)
+        sum = scores.inject { |sum, score| sum + score }
+        avg = sum.to_d / scores.count.to_d
         h.merge!( v.to_s => avg.round(2) )
       end
     end

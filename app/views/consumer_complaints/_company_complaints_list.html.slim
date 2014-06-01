@@ -1,0 +1,16 @@
+.row
+  .large-12.columns
+	  h3.section-title Complaints
+	  .section-contents
+	    table
+	      thead
+	        tr
+	          th Received On
+	          th Product
+	      tbody
+	        - complaints.each do |complaint|
+	          tr
+	            td 
+	              span = complaint.received_on
+	            td 
+	              span = complaint.product

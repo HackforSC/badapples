@@ -4,19 +4,12 @@
 
 .row
   .large-12.columns
-    div[class="section-container auto" data-section]
-      section
-        p[class="title" data-section-title]
-          a[href="#panel1"] Complaints Breakdown
-        div[class="content" data-section-content]
-          = render partial: "/consumer_complaints/trends_by_company", locals: {:complaints => complaints}
-      section
-        p[class="title" data-section-title]
-          a[href="#panel2"] Section 2
-        div[class="content" data-section-content]
-          = bar_chart RelationAggregationPresenter.new(complaints).severity_by_group(:company)
+    = render partial: "/consumer_complaints/trends_by_company", locals: {:complaints => complaints}
+.row
+  .large-12.columns
+    = link_to "View Company", { :controller => "consumer_complaints", :action => "company_details", :company => "Flagstar Bank" }, :class => "button radius"
 
-          / h6 Complaints broken down by product
-          / = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:product)
-          / h6 Complaints broken down by company
-          / = pie_chart RelationAggregationPresenter.new(complaints).records_by_group(:company)
+.row
+  .large-12.columns
+    h4 View Company Details
+    = render partial: "/consumer_complaints/company_links", locals: {:complaints => complaints}

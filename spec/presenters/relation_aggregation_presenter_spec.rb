@@ -12,6 +12,20 @@ describe RelationAggregationPresenter do
     23.times { FactoryGirl.create(:consumer_complaint, :state => "CA", :product => "Mortgage", :received_on => Date.new(2012, 1, 6)) }
   end
 
+  before(:each) do
+    # ConsumerComplaint.all.each do |c|
+    #   if c.product == "Credit"
+    #     stubbed_value = 4
+    #   elsif c.product == "Lease"
+    #     stubbed_value = 3
+    #   else
+    #     stubbed_value = 2
+    #   end
+
+    #   c.stub(:severity_score).and_return(5)
+    # end
+  end
+
   subject { described_class.new(relation) }
 
   describe "records_by_group", :records_by_group => true do
@@ -29,17 +43,17 @@ describe RelationAggregationPresenter do
   end
 
   describe "severity_by_group", :severity_by_group => true do
-    # context "with state" do
-    #   it "returns correct result" do
-    #     subject.severity_by_group(:state).should eq({"CA" => 53, "NC" => 37, "SC" => 40})
-    #   end
-    # end
+    context "with state" do
+      it "returns correct result" do
+        subject.severity_by_group(:state).should eq({"CA" => 2, "NC" => 2, "SC" => 2})
+      end
+    end
 
-    # context "with product" do
-    #   it "returns correct result" do
-    #     subject.severity_by_group(:product).should eq({"Credit" => 37, "Mortgage" => 44, "Lease" => 49})
-    #   end
-    # end
+    context "with product" do
+      it "returns correct result" do
+        subject.severity_by_group(:product).should eq({"Credit" => 2, "Mortgage" => 2, "Lease" => 2})
+      end
+    end
   end
 
   describe "trends_by_group", :trends_by_group => true do

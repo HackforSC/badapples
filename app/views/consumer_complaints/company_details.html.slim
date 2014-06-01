@@ -1,0 +1,18 @@
+= provide(:title, "Consumer Complaints - By Company")
+
+.row
+  h4 = params[:company]
+
+.row
+  .large-12.columns
+    div[class="section-container auto" data-section]
+      section
+        p[class="title" data-section-title]
+          a[href="#panel1"] Issue Breakdown
+        div[class="content" data-section-content]
+          = render partial: "/consumer_complaints/company_issues", locals: {:complaints => complaints}
+      section
+        p[class="title" data-section-title]
+          a[href="#panel2"] List of Complaints
+        div[class="content" data-section-content]
+          = render partial: "/consumer_complaints/company_complaints_list", locals: {:complaints => complaints}

@@ -1,0 +1,9 @@
+
+.row
+  .large-12.columns
+    h6 Issue Breakdown (Numbers)
+    = bar_chart RelationAggregationPresenter.new(complaints).records_by_group(:issue)
+.row
+  .large-12.columns
+    h6 Issue Breakdown (Severity)
+    = bar_chart RelationAggregationPresenter.new(complaints).severity_by_group(:issue)

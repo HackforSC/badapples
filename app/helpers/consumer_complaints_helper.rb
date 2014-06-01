@@ -9,9 +9,12 @@ module ConsumerComplaintsHelper
   end
 
   def public_product_options
-    unique_values = ConsumerComplaint.all.map { |a| a.product }.uniq
     options_for_select(
-      [[ "All", nil ]] + unique_values
+      [[ "All", nil ]] + ConsumerComplaint.all.map { |a| a.product }.uniq
     )
+  end
+
+  def company_names(collection = ConsumerComplaint.all)
+    collection.map { |a| a.company }.uniq
   end
 end
